@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spectrica</title>
+<style>
+* {box-sizing: border-box}
+body {font-family: Helvetica, sans-serif; margin:0; color:white; letter-spacing: 0.4em;}
+.mySlides {display: none}
+img {
+    vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: grey;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.5s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1s;
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.bkg {
+    background: rgb(10, 10, 10);
+}
+
+hr {
+  display: block;
+  width: 400px;
+  border-style: inset;
+  border-width: .5px;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+<body class="bkg">
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+    <img src="img/spectrica.jpg" style="width:100%;">
+</div>
+
+<div class="mySlides fade">
+  <img src="img/purpose.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <img src="img/parts.jpg" style="width:100%">
+</div>
+
+<a class="prev" onclick="showSlides(-1)">&#10094;</a>
+<a class="next" onclick="showSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(0)"></span>
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+</div>
+
+<div style="text-align:center; padding: 50px">
+    <h2>Contact</h2>
+    <hr>
+    <p>liquidphasetech@gmail.com</p>
+</div>
+
+<div style="text-align:center; padding: 80px">
+    <p>Copyright @ 2019 Liquid Phase Technology, LLC. All Rights Reserved</p>
+</div>
+
+<script>
+var slideIndex = 0;
+var timer = null;
+showSlides(0);
+
+function currentSlide(n) {
+    slideIndex = n;
+    showSlides();
+}
+
+function showSlides(n) {
+    clearTimeout(timer);
+    slideIndex += n;
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex % slides.length].style.display = "block";
+    dots[slideIndex % slides.length].className += " active";
+    timer = setTimeout(showSlides, 5000, 1);
+}
+</script>
+
+</body>
+</html>
